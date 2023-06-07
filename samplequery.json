@@ -1,0 +1,16 @@
+{
+  "query": "tv",
+  "page": 1,
+  "prg": "desktop",
+  "sort": "best_match",
+  "limit": 10,
+  "searchArgs": { "query": "tv", "prg": "desktop" },
+  "enableRelatedSearches": true,
+  "enableFacetCount": true,
+  "fetchMarquee": true,
+  "fetchSkyline": true,
+  "fetchGallery": false,
+  "fetchSbaTop": true,
+  "tenant": "WM_GLASS",
+  "pageType": "SearchPage"
+}
