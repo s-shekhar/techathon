@@ -1,5 +1,9 @@
 const axios = require("axios");
+const cache = {};
 function search(query = "") {
+  if (cache[query]) {
+    return cache[query];
+  }
   let config = {
     method: "get",
     maxBodyLength: Infinity,
@@ -51,13 +55,14 @@ function search(query = "") {
           item.priceInfo?.currentPrice?.priceString &&
           item.availabilityStatusV2.display === "In stock"
       );
-      return items.map((item, index) => ({
+      cache[query] = items.map((item, index) => ({
         price: item.priceInfo?.currentPrice?.priceString,
-        name: item.name.substring(0, 25),
+        name: item.name,
         availabilityStatus: "In stock",
         url: item.canonicalUrl,
         id: index,
       }));
+      return cache[query];
     })
     .catch((error) => {
       console.log(JSON.stringify(error));
